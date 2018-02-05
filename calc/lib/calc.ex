@@ -97,11 +97,11 @@ defmodule Calc do
           true ->          
             addsub = Enum.find(reverse(exp), fn(x) -> x == "+" || x == "-" end)
             muldiv = Enum.find(reverse(exp), fn(x) -> x == "*" || x == "/" end)
-            cond do
+            op = cond do
               addsub != nil ->
-                op = addsub
+                addsub
               muldiv != nil ->
-                op = Enum.find(reverse(exp), fn(x) -> x == "*" || x == "/" end)
+                Enum.find(reverse(exp), fn(x) -> x == "*" || x == "/" end)
             end
 
             op_ind = Enum.find_index(reverse(exp), fn(x) -> x == op end)            
