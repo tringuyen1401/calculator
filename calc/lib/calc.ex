@@ -104,9 +104,7 @@ defmodule Calc do
                 op = Enum.find(reverse(exp), fn(x) -> x == "*" || x == "/" end)
             end
 
-            op_ind = Enum.find_index(reverse(exp), fn(x) -> x == op end)
-
-            
+            op_ind = Enum.find_index(reverse(exp), fn(x) -> x == op end)            
             left =  Enum.take(exp, length(exp) - op_ind - 1)
             right = Enum.take(exp, -op_ind)
             result = case op do
@@ -119,7 +117,7 @@ defmodule Calc do
                   end
                   eval_sub(left) / eval_sub(right)
                 _ -> exit("Wrong argument")
-          end
+            end
           round(result)
         end
     end
